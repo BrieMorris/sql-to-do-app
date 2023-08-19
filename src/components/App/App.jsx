@@ -1,5 +1,6 @@
 import {useState,  useEffect} from 'react';
 import axios from 'axios';
+import './App.css'
 
 let toDoData = [];
 
@@ -36,6 +37,29 @@ function App () {
   useEffect(() => {
     fetchList()
   }, [])
+
+  const toggleTask = (id) => {
+    axios.put(`/todo/toggle/${id}`)
+    .then((response) =>{
+      console.log(response);
+      fetchCreatures();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  const deleteTask = (id) => {
+    axios.delete(`/todo/${id}`)
+    .then((response) =>{
+      console.log(response);
+      fetchCreatures();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
  
   return (
     <div>
@@ -52,7 +76,10 @@ function App () {
       {toDoList.map(list =>
       (<li key={list.id} class = {list.complete ? 'complete' : 'standard'}>
         {list.task} is {String(list.complete)}
-        <button onClick={() => deleteCreature(creature.id)}>Delete</button>
+        <button onClick={() => deleteTask(list.id)}>Delete</button>
+
+        {JSON.stringify(list.complete)}
+        <button onClick={() => toggleTask(list.id)}>Toggle</button>
       </li>
       ))}
 
@@ -60,5 +87,5 @@ function App () {
   );
 
 }
-// above add ul? what will make a bullet point 
+
 export default App
