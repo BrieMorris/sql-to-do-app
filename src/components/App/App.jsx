@@ -11,7 +11,7 @@ function App () {
   useState('');
 
   const fetchList = () => {
-    axios.get('/list')
+    axios.get('/todo')
     .then((response) => {
       console.log(response);
       console.log(response.data);
@@ -24,7 +24,7 @@ function App () {
 
   const addList = (event) => {
     event.preventDefault();
-    axios.post(`/list`, {task: newTask, complete: completeTask})
+    axios.post(`/todo`, {task: newTask, complete: completeTask})
     .then( (response) => {
       console.log(response);
     })
@@ -50,8 +50,9 @@ function App () {
       </form>
 
       {toDoList.map(list =>
-      (<li key={list.task}>
-        {list.task} is {list.complete}
+      (<li key={list.id} class = {list.complete ? 'complete' : 'standard'}>
+        {list.task} is {String(list.complete)}
+        <button onClick={() => deleteCreature(creature.id)}>Delete</button>
       </li>
       ))}
 
