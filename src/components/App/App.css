@@ -1,12 +1,17 @@
 .App {
-  text-align: center;
+  text-align: left;
+  background-color: lightseagreen;
+  justify-content: space-around;
+ 
 }
 
 .App-header {
-  background-color: #222;
+  background-color: lightseagreen;
   height: 70px;
   padding: 20px;
   color: white;
+  text-align: center;
+  border-style: dotted;
 }
 
 .App-title {
@@ -20,4 +25,28 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.form {
+  padding: 20px;
+  align-content: space-around;
+  
+
+}
+
+.list{
+  padding: 30px;
+  align-content: space-around;
+  background-color: lightseagreen;
+  color: white
+
+}
+
+.complete{
+  background-color: goldenrod;
+
+}
+
+.standard{
+
 }

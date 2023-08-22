@@ -62,30 +62,45 @@ function App () {
 
  
   return (
-    <div>
+    <div className='App'>
+      <div className='App-header'>
       <h1>TO DO APP</h1>
-
+      </div>
+    <div className='form'>
       <form onSubmit={addList}>
         <label>Task</label>
         <input onChange={ (event) => setNewTask(event.target.value)}   />
         <label>Complete</label>
         <input onChange={ (event) => setCompleteTask(event.target.value)} />
         <button type="submit">Add Task</button>
+        <br/>
+        <br/> 
       </form>
+      </div>
 
+    <div className='list'>
       {toDoList.map(list =>
-      (<li key={list.id} class = {list.complete ? 'complete' : 'standard'}>
-        {list.task} is {String(list.complete)}
+      
+      (list.complete) ? (
+        <li key={list.id} className = {list.complete ? 'complete' : 'standard'}>
+        {list.task}, COMPLETE 
+        <br/>
         <button onClick={() => deleteTask(list.id)}>Delete</button>
+        </li>
+      )
 
-        {JSON.stringify(list.complete)}
-        <button onClick={() => toggleTask(list.id)}>Toggle</button>
+      :(<li key={list.id} className = {list.complete ? 'complete' : 'standard'}>
+        {list.task} is {String(list.complete)}
+        <br/>
+        <button onClick={() => deleteTask(list.id)}>Delete</button>
+        <button onClick={() => toggleTask(list.id)}>Complete</button>
       </li>
       ))}
+      </div>
 
     </div>
   );
 
 }
 
-export default App
+export default App;
