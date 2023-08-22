@@ -1,7 +1,7 @@
 .App {
   text-align: left;
   background-color: lightseagreen;
-  justify-content: space-around;
+ justify-content: space-around;
  
 }
 
@@ -30,8 +30,6 @@
 .form {
   padding: 20px;
   align-content: space-around;
-  
-
 }
 
 .list{
@@ -39,12 +37,10 @@
   align-content: space-around;
   background-color: lightseagreen;
   color: white
-
 }
 
 .complete{
   background-color: goldenrod;
-
 }
 
 .standard{
