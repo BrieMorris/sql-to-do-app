@@ -2,6 +2,7 @@ import {useState,  useEffect} from 'react';
 import axios from 'axios';
 import './App.css'
 
+// hold to to items
 let toDoData = [];
 
 function App () {
@@ -11,6 +12,7 @@ function App () {
   const [completeTask, setCompleteTask] =
   useState('');
 
+  //gets the tasks from the server
   const fetchList = () => {
     axios.get('/todo')
     .then((response) => {
@@ -23,6 +25,7 @@ function App () {
     })
   }
 
+  //called when submitted to post the requesti and ass new task to list
   const addList = (event) => {
     event.preventDefault();
     axios.post(`/todo`, {task: newTask, complete: completeTask})
@@ -38,6 +41,7 @@ function App () {
     fetchList()
   }, [])
 
+  //marks task as complete
   const toggleTask = (id) => {
     axios.put(`/todo/toggle/${id}`)
     .then((response) =>{
@@ -49,6 +53,7 @@ function App () {
     });
   }
 
+  //delete task from from list and table
   const deleteTask = (id) => {
     axios.delete(`/todo/${id}`)
     .then((response) =>{
@@ -60,7 +65,7 @@ function App () {
     });
   }
 
- 
+ //renders to the DOM a form for adding tasks
   return (
     <div className='App'>
       <div className='App-header'>
@@ -78,6 +83,7 @@ function App () {
       </form>
       </div>
 
+    {/* renders list of tasks to DOM with buttons */}
     <div className='list'>
       {toDoList.map(list =>
       
