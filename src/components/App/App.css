@@ -11,7 +11,9 @@
   padding: 20px;
   color: white;
   text-align: center;
-  border-style: dotted;
+  border-style: double;
+  border-width: 4px;
+  border-color: purple;
 }
 
 .App-title {
@@ -28,6 +30,8 @@
 }
 
 .form {
+  color: purple;
+  text-shadow: 1px 1px;
   padding: 20px;
   align-content: space-around;
 }
@@ -40,7 +44,7 @@
 }
 
 .complete{
-  background-color: goldenrod;
+  background-color: purple;
 }
 
 .standard{

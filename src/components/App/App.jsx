@@ -2,6 +2,10 @@ import {useState,  useEffect} from 'react';
 import axios from 'axios';
 import './App.css'
 
+import Button from '@mui/material/Button';
+
+
+
 // hold to to items
 let toDoData = [];
 
@@ -77,7 +81,8 @@ function App () {
         <input onChange={ (event) => setNewTask(event.target.value)}   />
         <label>Complete</label>
         <input onChange={ (event) => setCompleteTask(event.target.value)} />
-        <button type="submit">Add Task</button>
+        {/* <button type="submit">Add Task</button> */}
+        <Button color='secondary' variant='contained' type="submit"  >Add Task</Button>
         <br/>
         <br/> 
       </form>
@@ -91,15 +96,18 @@ function App () {
         <li key={list.id} className = {list.complete ? 'complete' : 'standard'}>
         {list.task}, COMPLETE 
         <br/>
-        <button onClick={() => deleteTask(list.id)}>Delete</button>
+        {/* <button onClick={() => deleteTask(list.id)}>Delete</button> */}
+        <Button onClick={() => deleteTask(list.id)} >Delete</Button>
         </li>
       )
 
       :(<li key={list.id} className = {list.complete ? 'complete' : 'standard'}>
         {list.task} is {String(list.complete)}
         <br/>
-        <button onClick={() => deleteTask(list.id)}>Delete</button>
-        <button onClick={() => toggleTask(list.id)}>Complete</button>
+        {/* <button onClick={() => deleteTask(list.id)}>Delete</button> */}
+        <Button onClick={() => deleteTask(list.id)} >Delete</Button>
+        {/* <button onClick={() => toggleTask(list.id)}>Complete</button> */}
+        <Button color='secondary' onClick={() => toggleTask(list.id)} >Complete</Button>
       </li>
       ))}
       </div>
