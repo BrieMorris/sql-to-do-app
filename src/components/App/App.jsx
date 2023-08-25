@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 
 
 
+
 // hold to to items
 let toDoData = [];
 
@@ -15,6 +16,8 @@ function App () {
   useState('');
   const [completeTask, setCompleteTask] =
   useState('');
+  
+ 
 
   //gets the tasks from the server
   const fetchList = () => {
@@ -45,7 +48,7 @@ function App () {
     fetchList()
   }, [])
 
-  //marks task as complete
+ // marks task as complete
   const toggleTask = (id) => {
     axios.put(`/todo/toggle/${id}`)
     .then((response) =>{
@@ -56,6 +59,7 @@ function App () {
       console.log(error);
     });
   }
+
 
   //delete task from from list and table
   const deleteTask = (id) => {
@@ -87,31 +91,40 @@ function App () {
         <br/> 
       </form>
       </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Completed</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
 
     {/* renders list of tasks to DOM with buttons */}
-    <div className='list'>
+    <tbody className='list'>
       {toDoList.map(list =>
       
       (list.complete) ? (
-        <li key={list.id} className = {list.complete ? 'complete' : 'standard'}>
-        {list.task}, COMPLETE 
-        <br/>
+        <tr key={list.id} className = {list.complete ? 'complete' : 'standard'}>
+        <td>{list.task} </td>
+         <td> DONE </td>
         {/* <button onClick={() => deleteTask(list.id)}>Delete</button> */}
-        <Button onClick={() => deleteTask(list.id)} >Delete</Button>
-        </li>
+       <td> <Button onClick={() => deleteTask(list.id)} >Delete</Button></td>
+        </tr>
       )
 
-      :(<li key={list.id} className = {list.complete ? 'complete' : 'standard'}>
-        {list.task} is {String(list.complete)}
-        <br/>
-        {/* <button onClick={() => deleteTask(list.id)}>Delete</button> */}
-        <Button onClick={() => deleteTask(list.id)} >Delete</Button>
+      :(<tr key={list.id} className = {list.complete ? 'complete' : 'standard'}>
+        <td> {list.task} </td> 
+        <td>{String(list.complete)}</td> 
+        <td><Button color='secondary' onClick={() => toggleTask(list.id)} >Complete</Button> </td>
+       <td> <Button onClick={() => deleteTask(list.id)} >Delete</Button> </td>
         {/* <button onClick={() => toggleTask(list.id)}>Complete</button> */}
-        <Button color='secondary' onClick={() => toggleTask(list.id)} >Complete</Button>
-      </li>
+       
+      </tr>
       ))}
-      </div>
-
+      </tbody>
+      </table>
     </div>
   );
 

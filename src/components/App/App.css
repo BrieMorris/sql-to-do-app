@@ -1,7 +1,8 @@
 .App {
+
   text-align: left;
   background-color: lightseagreen;
- justify-content: space-around;
+  
  
 }
 
@@ -17,10 +18,12 @@
 }
 
 .App-title {
+
   font-size: 1.5em;
 }
 
 .App-intro {
+  
   font-size: large;
 }
 
@@ -30,13 +33,15 @@
 }
 
 .form {
+  display: flex; 
   color: purple;
   text-shadow: 1px 1px;
   padding: 20px;
-  align-content: space-around;
+ 
 }
 
 .list{
+ 
   padding: 30px;
   align-content: space-around;
   background-color: lightseagreen;
@@ -44,9 +49,11 @@
 }
 
 .complete{
+
   background-color: purple;
 }
 
 .standard{
+  display: flex; 
 
 }
